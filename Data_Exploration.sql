@@ -27,3 +27,17 @@ JOIN users u ON u.uid=r.reciever
 GROUP BY reciever 
 ORDER BY COUNT(reciever) 
 LIMIT 1,1
+
+-- 5  Find all the matches for a particular user 
+-- a b --> ON r.SENDER=s.reciever 
+-- b a --> WHERE r.reciever=s.SENDER 
+
+SELECT r.SENDER,r.reciever FROM right_swapping r join right_swapping s ON r.SENDER=s.reciever WHERE r.reciever=s.SENDER 
+
+-- for name 
+SELECT u1.name, u2.name FROM right_swapping r join right_swapping s ON r.SENDER=s.reciever
+JOIN users u1 ON r.SENDER=u1.uid
+JOIN users u2 ON r.reciever=u2.uid
+WHERE r.reciever=s.SENDER 
+
+-- 
