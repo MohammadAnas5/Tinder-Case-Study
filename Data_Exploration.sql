@@ -19,3 +19,11 @@ JOIN users u ON u.uid=s.SENDER
 GROUP BY s.SENDER 
 ORDER BY COUNT(SENDER) DESC 
 LIMIT 1,1 ) 
+
+-- 3 Find the name of the user who has received min number of requests
+SELECT u.name 
+FROM right_swapping r 
+JOIN users u ON u.uid=r.reciever 
+GROUP BY reciever 
+ORDER BY COUNT(reciever) 
+LIMIT 1,1
